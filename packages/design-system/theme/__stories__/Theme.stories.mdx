@@ -17,7 +17,6 @@ import theme from "../theme"
   {Object.entries(theme.colors).map((palette, i) => (
     <div key={i}>
       <ColorItem key={palette[0]} title={palette[0]} colors={palette[1]} />
-      {console.log(parseInt(theme.typography.desktop.h1.fontSize))}
     </div>
   ))}
 </ColorPalette>

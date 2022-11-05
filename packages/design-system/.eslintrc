@@ -8,7 +8,12 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "extends": ["airbnb", "prettier", "plugin:react/recommended"],
+  "extends": [
+    "airbnb",
+    "prettier",
+    "plugin:react/recommended",
+    "plugin:mdx/recommended"
+  ],
   "plugins": ["prettier", "react"],
   "overrides": [
     {
@@ -31,6 +36,21 @@
         "namedComponents": ["function-expression", "arrow-function"],
         "unnamedComponents": ["function-expression", "arrow-function"]
       }
-    ]
+    ],
+    "react/jsx-filename-extension": "off",
+    "import/extensions": "warn",
+    "radix": "off",
+    "no-use-before-define": [
+      "off",
+      {
+        "functions": false,
+        "classes": true,
+        "variables": true,
+        "allowNamedExports": true
+      }
+    ],
+    "react/no-array-index-key": "off",
+    "import/no-named-as-default-member": "off",
+    "import/no-named-as-default": "off"
   }
 }
