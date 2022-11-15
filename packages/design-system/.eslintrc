@@ -5,7 +5,7 @@
     "jest": true
   },
   "parserOptions": {
-    "ecmaVersion": "latest",
+    "ecmaVersion": 2020,
     "sourceType": "module"
   },
   "extends": ["airbnb", "prettier", "plugin:react/recommended"],

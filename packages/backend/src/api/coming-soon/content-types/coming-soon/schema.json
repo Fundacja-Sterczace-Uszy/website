@@ -1,0 +1,36 @@
+{
+  "kind": "singleType",
+  "collectionName": "coming_soons",
+  "info": {
+    "singularName": "coming-soon",
+    "pluralName": "coming-soons",
+    "displayName": "Strona w budowie",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "link": {
+      "displayName": "link",
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.link",
+      "required": false
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    }
+  }
+}

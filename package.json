@@ -6,6 +6,10 @@
     "develop:backend": "yarn --cwd packages/backend develop",
     "develop:frontend": "wait-on http://localhost:1337/admin && yarn --cwd packages/frontend/app develop",
     "develop": "cross-env FORCE_COLOR=1 npm-run-all -l -p develop:*",
+    "start": "yarn --cwd packages/backend start",
+    "build": "yarn --cwd packages/backend build",
+    "build:frontend": "yarn --cwd packages/frontend/app build",
+    "deploy:frontend": "yarn --cwd packages/frontend/app deploy",
     "storybook": "yarn --cwd packages/design-system storybook",
     "build-storybook": "yarn --cwd packages/design-system build-storybook",
     "lint": "yarn --cwd packages/design-system lint",
@@ -28,6 +32,11 @@
     "wait-on": "5.2.1"
   },
   "dependencies": {
-    "@commitlint/cli": "^17.1.2"
+    "@commitlint/cli": "^17.1.2",
+    "pg-connection-string": "^2.5.0"
+  },
+  "engines": {
+    "node": ">=14.19.1 <=16.x.x",
+    "npm": ">=6.0.0"
   }
 }

@@ -6,9 +6,7 @@ import qs from "qs"
  * @returns {string} Full Strapi URL
  */
 export function getStrapiURL(path = "") {
-  return `${
-    process.env.NEXT_PUBLIC_STRAPI_API_URL || "http://localhost:1337"
-  }${path}`
+  return `${process.env.MY_HEROKU_URL || "http://localhost:1337"}${path}`
 }
 
 /**
@@ -43,4 +41,17 @@ export async function fetchAPI(path, urlParamsObject = {}, options = {}) {
   }
   const data = await response.json()
   return data
+}
+
+export const fetchComingSoon = async () => {
+  const [res] = await Promise.all([
+    fetchAPI("/coming-soon", {
+      populate: {
+        seo: { populate: "*" },
+        link: { populate: "*" },
+      },
+    }),
+  ])
+
+  return res.data.attributes
 }

@@ -1,46 +1,69 @@
-import React from "react"
-import { Normalize } from "styled-normalize"
-
-import { fetchAPI } from "../lib/api"
+import React, { useContext } from "react"
 import Head from "next/head"
 
-import Badge from "../../../design-system/components/badge/Badge"
+import { dehydrate, QueryClient, useQuery } from "@tanstack/react-query"
 
-const Home = ({ homepage }) => {
-  return (
+import Typography from "design-system/components/typography/Typography"
+import Button from "design-system/components/button/Button"
+
+import { fetchComingSoon } from "../lib/api"
+
+import { GlobalContext } from "./_app"
+
+const Home = () => {
+  const { data, isLoading } = useQuery(["coming-soon"], fetchComingSoon)
+  const global = useContext(GlobalContext)
+
+  return isLoading ? (
+    <p>Loading...</p>
+  ) : (
     <>
       <Head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
-        <title>{homepage.attributes.seo.metaTitle}</title>
-        <meta
-          name="description"
-          content={homepage.attributes.seo.metaDescription}
-        />
+        <title>{data.seo.metaTitle}</title>
+        <meta name="description" content={data.seo.metaDescription} />
       </Head>
-      <Normalize />
-      <h1>{homepage.attributes.hero.title}</h1>
-      <Badge text="Badge" />
+      {global.siteName && (
+        <Typography variant="bodyTiny">{global.siteName}</Typography>
+      )}
+
+      <Typography variant="h1">{data.heading}</Typography>
+      <Typography variant="bodyTitle">{data.description}</Typography>
+
+      {data.link && <Button text={data.link.text} href={data.link.url} />}
+
+      <div>
+        {global.socialMedia?.facebook && (
+          <Button
+            variant="text"
+            size="small"
+            text="Facebook"
+            href={global.socialMedia.facebook}
+          />
+        )}
+
+        {global.socialMedia?.facebook && (
+          <Button
+            variant="text"
+            size="small"
+            text="Instagram"
+            href={global.socialMedia.instagram}
+          />
+        )}
+      </div>
     </>
   )
 }
 
-export async function getStaticProps() {
-  // Run API calls in parallel
-  const [homepageRes] = await Promise.all([
-    fetchAPI("/homepage", {
-      populate: {
-        hero: "*",
-        seo: { populate: "*" },
-      },
-    }),
-  ])
+export const getStaticProps = async () => {
+  const queryClient = new QueryClient()
+  await queryClient.prefetchQuery(["coming-soon"], fetchComingSoon)
 
   return {
     props: {
-      homepage: homepageRes.data,
+      dehydratedState: dehydrate(queryClient),
     },
-    revalidate: 1,
   }
 }
 
