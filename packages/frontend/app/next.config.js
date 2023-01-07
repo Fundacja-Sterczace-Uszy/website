@@ -2,6 +2,9 @@
  * @type {import('next').NextConfig}
  */
 const nextConfig = {
+  env: {
+    PUBLIC_STRAPI_API_URL: process.env.PUBLIC_STRAPI_API_URL,
+  },
   images: {
     loader: "default",
     domains: ["localhost"],
