@@ -14,6 +14,7 @@
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "@next/env": "^12.3.0",
+    "@sentry/nextjs": "^7.30.0",
     "moment": "^2.24.0",
     "next": "^11.0.0",
     "prop-types": "^15.8.1",

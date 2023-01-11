@@ -1,6 +1,7 @@
 import { Meta, Canvas, Story, ArgsTable } from "@storybook/addon-docs"
 
 import TextBanner from "design-system/recipes/textBanner"
+import Button from "design-system/components/button"
 
 <Meta title="Recipes/TextBanner" component={TextBanner} />
 
@@ -15,6 +16,15 @@ import TextBanner from "design-system/recipes/textBanner"
       subtitle: "FUNDACJA STERCZĄCE USZY",
       description:
         "Nasi podopieczni czekają na Twoją pomoc. Nowy dom, wsparcie finansowe, spacery, pełna miska, opieka lekarza to tylko niektóre formy wsparcia. Jeżeli chcesz czynić dobro sprawdz, co możesz zrobić.",
+      button: (
+        <Button
+          text="Button"
+          variant="text"
+          color="primary"
+          iconStart="arrowDown"
+        />
+      ),
+      href: "https://google.com",
     }}
   >
     {Template.bind()}

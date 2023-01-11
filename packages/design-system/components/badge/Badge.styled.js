@@ -13,7 +13,7 @@ export const Badge = styled.div`
       case "primary":
         return theme.colors.primary[500]
       default:
-        return theme.colors.gray[200]
+        return theme.colors.grey[200]
     }
   }};
   color: ${({ variant, theme }) =>

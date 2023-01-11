@@ -1,0 +1,85 @@
+import { Meta, Canvas, Story, ArgsTable } from "@storybook/addon-docs"
+
+import Input from "design-system/components/input"
+
+<Meta title="Components/Input" component={Input} />
+
+# Input
+
+<Canvas>
+  <Story
+    name="Overview"
+    args={{
+      label: "Example label",
+      type: "text",
+      placeholder: "test",
+    }}
+  >
+    {Template.bind()}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story
+    name="Overview - required"
+    args={{
+      label: "Example label",
+      type: "text",
+      placeholder: "test",
+      required: true,
+    }}
+  >
+    {Template.bind()}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story
+    name="Overview - disabled"
+    args={{
+      label: "Example label",
+      type: "text",
+      placeholder: "test",
+      disabled: true,
+    }}
+  >
+    {Template.bind()}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story
+    name="Overview - error"
+    args={{
+      label: "Example label",
+      type: "text",
+      placeholder: "test",
+      state: "error",
+      message: "Wpisz poprawne dane",
+    }}
+  >
+    {Template.bind()}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story
+    name="Overview - valid"
+    args={{
+      label: "Example label",
+      type: "text",
+      placeholder: "test",
+      state: "valid",
+    }}
+  >
+    {Template.bind()}
+  </Story>
+</Canvas>
+
+<ArgsTable />
+
+export const Template = (args) => (
+  <div style={{ maxWidth: "270px" }}>
+    <Input {...args} />
+  </div>
+)

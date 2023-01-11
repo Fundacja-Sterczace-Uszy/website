@@ -1,7 +1,7 @@
-import { string, oneOf } from "prop-types"
-import { useTheme } from "@emotion/react"
-import Typography from "design-system/components/typography/Typography"
-import Button from "design-system/components/button"
+import { string, oneOf, node } from "prop-types"
+
+import Typography from "design-system/components/typography"
+import theme from "design-system/theme"
 
 import * as Styled from "./TextBanner.styled"
 
@@ -36,42 +36,32 @@ const sizes = {
   },
 }
 
-const TextBanner = ({ heading, description, subtitle, layout, size }) => {
-  const theme = useTheme()
-  return (
-    <Styled.TextBanner layout={layout} size={size}>
-      <Typography
-        variant={sizes[size].subtitle}
-        color={theme.colors.primary[500]}
-      >
-        {subtitle}
+const TextBanner = ({
+  heading,
+  description,
+  subtitle,
+  layout,
+  size,
+  button,
+  subtitleColor,
+  headingColor,
+  descriptionColor,
+}) => (
+  <Styled.TextBanner layout={layout} size={size}>
+    <Styled.Subtitle variant={sizes[size].subtitle} color={subtitleColor}>
+      {subtitle}
+    </Styled.Subtitle>
+    <Styled.Container size={size}>
+      <Typography variant={sizes[size].heading} color={headingColor}>
+        {heading}
       </Typography>
-      <Styled.Container size={size}>
-        <Typography
-          variant={sizes[size].heading}
-          color={theme.colors.grey[600]}
-        >
-          {heading}
-        </Typography>
-      </Styled.Container>
-      <Typography
-        variant={sizes[size].description}
-        color={theme.colors.grey[500]}
-      >
-        {description}
-      </Typography>
-      <Styled.ContainerButton size={size}>
-        <Button
-          variant={sizes[size].button}
-          text="Button"
-          color="primary"
-          iconEnd="arrowDown"
-          size={sizes[size].buttonSize}
-        />
-      </Styled.ContainerButton>
-    </Styled.TextBanner>
-  )
-}
+    </Styled.Container>
+    <Typography variant={sizes[size].description} color={descriptionColor}>
+      {description}
+    </Typography>
+    <Styled.ButtonContainer>{button && button}</Styled.ButtonContainer>
+  </Styled.TextBanner>
+)
 
 TextBanner.propTypes = {
   heading: string.isRequired,
@@ -79,12 +69,20 @@ TextBanner.propTypes = {
   subtitle: string,
   layout: oneOf(["left", "center"]),
   size: oneOf(["tiny", "small", "medium", "large"]),
+  button: node,
+  subtitleColor: string,
+  headingColor: string,
+  descriptionColor: string,
 }
 
 TextBanner.defaultProps = {
   subtitle: "",
   layout: "left",
   size: "medium",
+  button: null,
+  subtitleColor: theme.colors.primary[500],
+  headingColor: theme.colors.grey[600],
+  descriptionColor: theme.colors.grey[500],
 }
 
 export default TextBanner

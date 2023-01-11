@@ -10,7 +10,7 @@
     },
     "ignorePatterns": ["packages/backend", "packages/frontend/e2e"],
     "extends": ["airbnb", "prettier", "plugin:react/recommended"],
-    "plugins": ["prettier", "react"],
+    "plugins": ["prettier", "react", "check-file"],
     "overrides": [
       {
         "files": ["**/*.test.js", "**/*.test.jsx"],
@@ -31,6 +31,26 @@
         {
           "namedComponents": ["function-expression", "arrow-function"],
           "unnamedComponents": ["function-expression", "arrow-function"]
+        }
+      ],
+      "check-file/folder-match-with-fex": [
+        "error",
+        {
+          "*.test.{js,jsx}": "**/__tests__/",
+          "*.stories.mdx": "**/__stories__/"
+        }
+      ],
+      "check-file/filename-naming-convention": [
+        "error",
+        {
+          "packages/design-system/**/*.{jsx}": "CAMEL_CASE"
+        }
+      ],
+      "check-file/folder-naming-convention": [
+        "error",
+        {
+          "packages/design-system/components/*": "CAMEL_CASE",
+          "packages/design-system/recipes/*": "CAMEL_CASE"
         }
       ]
     }

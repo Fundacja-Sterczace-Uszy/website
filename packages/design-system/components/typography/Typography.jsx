@@ -1,6 +1,5 @@
 import { string, oneOf, node } from "prop-types"
 import React from "react"
-
 import * as Styled from "./Typography.styled"
 
 const variantsMapping = {
@@ -16,11 +15,13 @@ const variantsMapping = {
   bodyTiny: "p",
 }
 
-const Typography = ({ variant, color, children, as }) => (
+const Typography = ({ variant, color, children, as, className, ...rest }) => (
   <Styled.Container
     variant={variant}
     color={color}
     as={as || variantsMapping[variant]}
+    className={className}
+    {...rest}
   >
     {children}
   </Styled.Container>
@@ -31,6 +32,7 @@ Typography.propTypes = {
   variant: oneOf(Object.keys(variantsMapping)),
   as: string,
   children: node,
+  className: string,
 }
 
 Typography.defaultProps = {
@@ -38,6 +40,7 @@ Typography.defaultProps = {
   children: "",
   as: "",
   variant: "bodySmall",
+  className: "",
 }
 
 export default Typography

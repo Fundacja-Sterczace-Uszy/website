@@ -1,7 +1,7 @@
 import Head from "next/head"
 import { Normalize } from "styled-normalize"
 import { ThemeProvider, Global, css } from "@emotion/react"
-import { node, shape } from "prop-types"
+import { func, shape } from "prop-types"
 
 import theme from "design-system/theme"
 
@@ -25,7 +25,7 @@ const MyApp = ({ Component, pageProps }) => (
 )
 
 MyApp.propTypes = {
-  Component: node.isRequired,
+  Component: func.isRequired,
   pageProps: shape({}).isRequired,
 }
 
