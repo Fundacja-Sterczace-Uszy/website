@@ -80,6 +80,13 @@ export const Text = styled.span`
     css`
       border-bottom: 2px solid ${colors[color].mainColor};
     `}
+    :hover {
+    ${({ variant }) =>
+      variant === "text" &&
+      css`
+        text-decoration: underline;
+      `}
+  }
 `
 
 export const Icon = styled.span`
