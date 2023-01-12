@@ -1,0 +1,135 @@
+import { Meta, Canvas, Story, ArgsTable } from "@storybook/addon-docs"
+import Button from "design-system/components/button"
+import Accordion from "design-system/components/accordion"
+import List from "design-system/components/list"
+import ListItem from "design-system/components/listItem"
+import Typography from "design-system/components/typography"
+
+<Meta title="Components/Accordion" component={Accordion} />
+
+# Accordion
+
+<Canvas>
+  <Story
+    name="Overview - black with button"
+    args={{
+      icon: "arrowDown",
+      icon: "arrowUp",
+      text: "Fundacja",
+      color: "grey",
+      activeColor: "neutrals",
+      button: (
+        <Button
+          text="Button ->"
+          variant="textLine"
+          size="small"
+          href="https://google.com"
+        />
+      ),
+    }}
+  >
+    {TextTemplate.bind()}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story
+    name="Overview - white with Button"
+    args={{
+      icon: "arrowDown",
+      icon: "arrowUp",
+      text: "Fundacja",
+      color: "white with Button",
+      activeColor: "primary",
+      button: (
+        <Button
+          text="Button ->"
+          variant="textLine"
+          size="small"
+          href="https://google.com"
+        />
+      ),
+    }}
+  >
+   {TextTemplate.bind()}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story
+    name="Overview - white with links"
+    args={{
+      icon: "arrowDown",
+      icon: "arrowUp",
+      text: "Fundacja",
+      color: "white with Links",
+      activeColor: "primary",
+    }}
+  >
+    {TemplateGrid.bind()}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story
+    name="Overview - black with links"
+    args={{
+      icon: "arrowDown",
+      icon: "arrowUp",
+      text: "Fundacja",
+      color: "grey",
+      activeColor: "neutrals",
+    }}
+  >
+    {NewGrid.bind()}
+  </Story>
+</Canvas>
+
+<ArgsTable />
+
+export const TemplateGrid = (args) => (
+ <div
+    style={{
+    }}
+  >
+  <Accordion {...args}>
+      <List gap={8}>
+      <ListItem variant="gray">O nas</ListItem>
+      <ListItem variant="gray">Aktualności</ListItem>
+      <ListItem variant="gray">Opinie</ListItem>
+      <ListItem variant="gray">Partnerzy i Przyjaciele</ListItem>
+      <ListItem variant="gray">Umowa</ListItem>
+      </List>
+    </Accordion>
+  </div>
+)
+
+export const NewGrid = (args) => (
+ <div
+    style={{
+    }}
+  >
+  <Accordion {...args}>
+      <Div gap={8}>
+      <Div>O nas</Div>
+      <Div>Aktualności</Div>
+      <Div>Opinie</Div>
+      <Div>Partnerzy i Przyjaciele</Div>
+      <Div>Umowa</Div>
+      </Div>
+    </Accordion>
+  </div>
+)
+
+export const TextTemplate = (args) => (
+  <div
+    style={{
+    }}
+  >
+  <Accordion {...args}>
+      <div>
+        Tu wpisz odpowiedź na pytanie
+      </div>
+    </Accordion>
+  </div>
+)
